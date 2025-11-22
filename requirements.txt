@@ -1,5 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
 python-multipart
 PyPDF2
 openpyxl
@@ -7,3 +7,7 @@ requests
 openai
 pytest
 pydantic-settings
+pdf2image
+pytesseract
+Pillow
+python-dotenv
