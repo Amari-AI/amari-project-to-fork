@@ -1,0 +1,9 @@
+Bill of lading number
+Container Number
+Consignee Name
+Consignee Address
+Date of export
+Date
+Line Items Count
+Average Gross Weight
+Average Price

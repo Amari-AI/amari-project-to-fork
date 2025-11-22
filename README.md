@@ -1,44 +1,93 @@
 # Document Processing Application
 
-This API processes shipment documents and data is made readily available to user on UI
+A production-ready application that processes shipment documents (PDF, XLSX) and extracts structured data using AI.
 
-## Setup
+## 🚀 Quick Start
 
-1. Clone the repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the API: `python -m app.main`
-4. You may access the API docs at [`http://localhost:8000/docs`](http://localhost:8000/docs)
+### Prerequisites
+- Python 3.13+
+- Node.js 18+
+- OpenAI API key (already configured)
 
-## API Endpoints
+### Installation & Running
 
-- `POST /process-documents`: Single endpoint to process all documents and fill out the form
-## Docker
-
-Build the Docker image: 
-
+**Backend:**
 ```bash
-    docker build -t document-processor .
+source venv/bin/activate
+uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-Run the Docker container:
-
+**Frontend:**
 ```bash
-    docker run -d -p 8000:8000 document-processor
+cd frontend
+npm run dev
 ```
 
-## Testing
+**Access:** Open `http://localhost:5174` in your browser
 
+### Testing
 
-Run tests:
-
+**Run all tests:**
 ```bash
-    pytest
+source venv/bin/activate
+python -m pytest tests/test_app.py -v
 ```
 
-## Evaluation
-
-Run the evaluation script:
-
+**Generate sample test documents:**
 ```bash
-    python evaluation.py
+source venv/bin/activate
+python create_test_docs.py
 ```
+
+## 📋 Features
+
+- ✅ Upload multiple documents (PDF, XLSX)
+- ✅ AI-powered data extraction using GPT-5-mini
+- ✅ Editable form with extracted data
+- ✅ Side-by-side document preview
+- ✅ Comprehensive test suite (8 tests passing)
+- ✅ Sample test documents included
+
+## 🧪 Test Files
+
+Sample documents are available in `tests/`:
+- `sample_bill_of_lading.pdf` - Bill of lading with shipping details
+- `sample_invoice.xlsx` - Commercial invoice with line items
+
+## 📦 Tech Stack
+
+**Backend:**
+- FastAPI
+- Anthropic Claude 3 Haiku
+- PyPDF2 (PDF extraction)
+- Pandas (XLSX processing)
+
+**Frontend:**
+- React + Vite
+- Tailwind CSS
+- Axios
+
+## 🔧 Configuration
+
+LLM settings are in `app/services/llm_service.py`:
+- Model: `claude-3-haiku-20240307`
+- Provider: Anthropic
+
+## 📝 Extracted Fields
+
+- Bill of lading number
+- Container Number
+- Consignee Name
+- Consignee Address
+- Date of export
+- Date
+- Line Items Count
+- Average Gross Weight
+- Average Price
+
+## 🎯 Next Steps
+
+- [ ] Docker containerization
+- [ ] Evaluation script (accuracy, precision, recall, F1)
+- [ ] Additional unit tests
+- [ ] OCR support for scanned documents
